@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Edit Users {{ id }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class=“container”>
+    {% for user in this_user: %}
+    <form action='/users/{{user.id}}/update' method='POST'>
+     
+    <h1>Edit User {{ user.id }}</h1>
+    
+    
+        <label for="name">Full Name:
+            <input type="text" name="name" id="name">
+        </label>
+    
+        <label for="email">Email:
+            <input type="text" name="email" id="email">
+        </label>
+    
+        <input type='hidden' value="{{user['id']}}">
+        <input type="submit" value="Update">
+    </form>
+     
+    
+    <a href='/users/{{user["id"]}}'>Show</a>
+    {% endfor %}
+    <a href='/goback'>Go Back</a>
+</div>
+</body>
+
+</html>
